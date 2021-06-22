@@ -1,7 +1,10 @@
 <template>
   <div class="nav">
     <div class="nav-box">
-      
+        <router-link to="/">Galleries</router-link> |
+    </div>
+     <div class="nav-box">
+      <input @input="search" placeholder="search" />
     </div>
     <div class="nav-box">
       <template v-if="!isAuthenticated">
@@ -15,14 +18,19 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 export default {
   name: 'nav-bar',
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
   },
   methods: {
-    
+      search(evt) {
+      this.setSearchTerm(evt.target.value);
+      this.getGalleries();
+    },
+    ...mapActions('galleries', ['getGalleries']),
+    ...mapMutations('galleries', ['setSearchTerm']),
     ...mapActions('auth', ['logout']),
   },
 };
