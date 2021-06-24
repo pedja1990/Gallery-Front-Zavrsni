@@ -1,8 +1,9 @@
 import BaseService from './BaseService';
 
 class GalleryService extends BaseService {
-  async getGalleries() {
-    const { data } = await this.http.get('/galleries');
+  async getGalleries(name) {
+    const { data } = await this.http.get('/galleries',
+    {params:name});
     return data;
   }
 
@@ -25,6 +26,8 @@ class GalleryService extends BaseService {
     const { data } = await this.http.delete(`/galleries/${id}`);
     return data;
   }
+
+  
 }
 
 const galleriesService = new GalleryService();

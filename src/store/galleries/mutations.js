@@ -8,4 +8,7 @@ export const mutations = {
     setSearchTerm(state, searchTerm) {
       state.searchTerm = searchTerm;
     },
+    setGallery(state, gallery) {
+      state.gallery = gallery;
+    },
   };

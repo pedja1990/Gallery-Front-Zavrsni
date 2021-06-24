@@ -10,6 +10,11 @@
         <router-link :to="`/galleries/${gallery.id}`">
           {{ gallery.name }}</router-link>
       </h3>
+      <h4>
+    Author: 
+        <router-link :to="{ name: 'author', params: {id: gallery.user.id }}">
+          {{gallery.user.name}}</router-link>
+      </h4>
 
     <h3>Images</h3>
 
@@ -20,8 +25,10 @@
     :key="index">
 
     <div class="description">Description: {{gallery.description}}</div>
+    
      
      <p>Created_at: {{gallery.created_at}}</p>
+
 
  </div>
  
@@ -49,10 +56,23 @@ export default {
     await this.getGalleries();
     
   },
+
+
+  
+
+
 };
 </script>
 
 <style scoped>
+
+#carousel-1{
+    width: 300px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 

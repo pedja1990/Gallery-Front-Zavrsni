@@ -4,8 +4,15 @@ export const actions = {
     const galleries = await galleriesService.getGalleries(store.state.searchTerm);
     store.commit('setGalleries', galleries);
   },
+
+
   async deleteGallery(store, gallery) {
     await galleriesService.deleteGallery(gallery.id);
     store.commit('deleteGallery', gallery);
+  },
+
+  async getGallery(store, id) {
+    const gallery = await galleriesService.getGallery(id);
+    store.commit("setGallery", gallery);
   },
 };

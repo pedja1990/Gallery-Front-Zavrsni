@@ -3,17 +3,28 @@
     <div class="nav-box">
         <router-link to="/">Galleries</router-link> |
     </div>
-     <div class="nav-box">
+     <!-- <div class="nav-box">
       <input @input="search" placeholder="search" />
-    </div>
+    </div> -->
     <div class="nav-box">
-      <template v-if="!isAuthenticated">
+      <input 
+      @input="search"
+      class="navbar-nav"
+      type="text"
+      placeholder="Search" 
+      />
+      <br/>
+      <button @click="filter" class="btn btn-primary">Search</button>
+    </div>
+
+    <div class="nav-box">
+      <form v-if="!isAuthenticated">
         <router-link to="/register">Register</router-link> |
         <router-link to="/login">Login</router-link>
-      </template>
-      <template v-else>
+      </form>
+      <form v-else>
         <a class="button" @click="logout">Logout</a>
-      </template>
+      </form>
     </div>
   </div>
 </template>
@@ -21,18 +32,33 @@
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 export default {
   name: 'nav-bar',
+
+  
   computed: {
     ...mapGetters('auth', ['isAuthenticated']),
+    ...mapGetters('galleries', ['galleries']),
   },
   methods: {
       search(evt) {
       this.setSearchTerm(evt.target.value);
       this.getGalleries();
     },
+
+    
+  
     ...mapActions('galleries', ['getGalleries']),
     ...mapMutations('galleries', ['setSearchTerm']),
     ...mapActions('auth', ['logout']),
+
+
+    filter(){
+    this.setSearchTerm(this.search)
+    this.getGalleries(this.search)
+    
+  }
   },
+
+  
 };
 </script>
 <style scoped>
