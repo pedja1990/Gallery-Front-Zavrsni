@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import { globalAuthGuard } from '../guards/authGuard'
+import Galleries from '../components/Galleries'
+import Gallery from '../components/Gallery'
 
 
 
@@ -26,7 +28,19 @@ const routes = [
     component: Login,
     meta: { guestRequired: true },
     
-  }
+  },
+  {
+    path: '/galleries',
+    name: 'galleries',
+    component: Galleries,
+    meta: { guestRequired: true },
+  },
+  {
+    path: '/galleries/{$id}',
+    name: 'gallery',
+    component: Gallery,
+    meta: { guestRequired: true },
+  },
 ]
 
 const router = new VueRouter({
