@@ -21,13 +21,15 @@
     <img 
     width="150px"
     height="150px"
-    v-bind:src="gallery.images[0].source"
+    v-bind:src="gallery.images"
     :key="index">
 
     <div class="description">Description: {{gallery.description}}</div>
     
      
      <p>Created_at: {{gallery.created_at}}</p>
+
+     
 
 
  </div>
@@ -53,9 +55,8 @@ export default {
     ...mapActions( 'images',['getImages'] ),  //('galleries', ['setSearchTerm'])
   },
   async created() {
+    console.log('tu sam.')
     await this.getGalleries();
-
-    
     
   },
 

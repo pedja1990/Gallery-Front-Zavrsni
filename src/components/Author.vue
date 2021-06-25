@@ -16,11 +16,11 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   props: ["id"],
   computed: {
-    ...mapGetters('user', ['singleUser']),
+    ...mapGetters('users', ['singleUser']),
   },
   methods: {
-    ...mapActions('user', ['getSingleUser']),
-    ...mapActions( 'gallerie',['getGalleries'] ),
+    ...mapActions('users', ['getSingleUser']),
+    ...mapActions( 'gallery',['getGalleries'] ),
   },
   async created() {
     await this.getSingleUser(this.id);

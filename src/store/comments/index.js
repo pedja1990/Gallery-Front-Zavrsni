@@ -5,14 +5,13 @@ import { getters } from "./getters";
 const store = {
   namespaced: true,
   state: () => ({
-    singleUser: {},
-    galleries: [],
-    
+    comments: [],
+    comment: {},
   }),
 
   actions,
-  getters,
   mutations,
+  getters,
 };
 
 export default store;

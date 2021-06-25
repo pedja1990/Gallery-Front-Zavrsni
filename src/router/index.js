@@ -16,6 +16,7 @@ const routes = [
     path: '/galleries',
     name: 'galleries',
     component: Galleries,
+    props: true,
   },
   {
     path: '/galleries/:id',

@@ -1,8 +1,8 @@
 import BaseService from "./BaseService";
 
 class UserService extends BaseService {
-  async get(id) {
-    const { data } = await this.client.get(`/users/${id}`);
+  async getUser(id) {
+    const { data } = await this.http.get(`/user/${id}`);
     console.log(data);
     return data;
   }
