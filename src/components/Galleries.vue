@@ -54,6 +54,8 @@ export default {
   },
   async created() {
     await this.getGalleries();
+
+    
     
   },
 

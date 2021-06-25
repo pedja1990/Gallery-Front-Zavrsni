@@ -14,6 +14,7 @@
                 img-width="1500"
                 img-height="1004"
                 style="text-shadow: 1px 1px 2px #333;"
+                
                 >
                      <b-carousel-slide v-for="(image,index) in gallery.images" :key="index"   :img-src="image.source">
                      </b-carousel-slide>
