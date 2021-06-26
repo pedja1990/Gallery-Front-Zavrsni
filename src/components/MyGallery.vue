@@ -1,38 +1,13 @@
 <template>
-  <div>
-    <h1>
-      My galeries:
-      <router-link :to="`/myGalleries`"> </router-link>
-      <b
-        ><strong
-          >{{ oneUser[0].user.name }}
-         
-        </strong></b
-      >
-    </h1>
-    <hr />
-
-    <div v-for="(user, index) in oneUser" :key="index">
-      <h3>Gallery No.: {{ index + 1 }}</h3>
-      <hr />
-      <h3>Gallery Name: {{ user.name }}</h3>
-      <h3>Description: {{ user.description }}</h3>
-      <h3>Gallery Images:</h3>
-      <br />
-
-      <img
-        width="200px"
-        height="200px"
-        v-for="(img, index) in user.images"
-        :key="index"
-        v-bind:src="img.url"
-        alt=""
-      />
-
-      <br />
-      <br />
-      <hr />
-    </div>
+   <div>
+    <h1>My galleries: </h1>
+    <h3><div v-for="(gallery, index) in this.singleUser.galleries" :key="index">
+      <b>Name: </b>{{ gallery.name }} 
+      <br>
+      <b>Description:</b>{{ gallery.description }} 
+      <br>
+      <b>Created at: </b>{{ gallery.created_at }}
+      <br></div></h3>
   </div>
 </template>
 
@@ -43,20 +18,23 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters({ activeUser: "auth/activeUser" }),
-    ...mapGetters({ singleUser: "user/singleUser" }),
+    ...mapGetters('auth', ['activeUser']),
+    ...mapGetters('users', ['singleUser'] ),
   },
   methods: {
-    ...mapActions({ getActiveUser: "auth/getActiveUser" }),
-    ...mapActions({ getSingleUser: "user/getSingleUser" }),
+    ...mapActions('auth', ['getActiveUser']),
+    ...mapActions('users', ['getSingleUser']),
+    ...mapActions( 'galleries',['getGalleries']),
   },
-  async created() {
+    async created() {
+      console.log('1')
     await this.getActiveUser();
-    await this.getSingleUser(this.user.id);
-    if (this.singleUser.length === 0) {
-      alert("This user has no galleries.");
-    }
+console.log('2')
+    await this.getSingleUser(this.activeUser.id);
+console.log('3')
+    console.log(this.activeUser);
   },
+ 
 };
 </script>
 

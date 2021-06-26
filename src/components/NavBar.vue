@@ -2,6 +2,7 @@
   <div class="nav">
     <div class="nav-box">
         <router-link to="/">Galleries</router-link> |
+        <router-link :to="`/myGalleries`">My Gallery</router-link> 
     </div>
      <!-- <div class="nav-box">
       <input @input="search" placeholder="search" />
