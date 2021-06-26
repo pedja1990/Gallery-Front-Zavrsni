@@ -42,6 +42,7 @@
 <script>
 
 import { mapActions, mapGetters } from "vuex";
+// import MyGallery from "./MyGallery.vue";
 
 export default {
     name: 'galleries',

@@ -6,6 +6,7 @@ import { globalAuthGuard } from '../guards/authGuard'
 import Galleries from '../components/Galleries'
 import Gallery from '../components/Gallery'
 import Author from '../components/Author'
+import MyGallery from "../components/MyGallery";
 Vue.use(VueRouter)
 const routes = [
   {
@@ -42,6 +43,13 @@ const routes = [
     name: "author",
     props: true,
   },
+  {
+    path: "/myGalleries",
+    component: MyGallery,
+    props: true,
+    meta: { authRequired: true },
+  },
+  
 ]
 const router = new VueRouter({
   mode: 'history',
